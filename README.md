@@ -52,7 +52,7 @@ Ingresa la clave (32 bytes para Salsa20/ChaCha20, variable para RC4).
 Ingresa el nonce (8 bytes para Salsa20/ChaCha20).
 Ingresa el texto plano a cifrar.
 
-##📄 Archivos generados
+## 📄 Archivos generados
 Durante el proceso de cifrado, los resultados intermedios de los rounds se guardan en archivos de texto en la misma ruta donde se ejecuta el programa:
 
 salsa20.txt: Rondas intermedias del cifrado Salsa20.
@@ -64,7 +64,7 @@ El programa te mostrará la ruta exacta donde se guardarán los archivos:
 Los archivos de los rounds se guardarán en la siguiente ruta:
 <ruta_aquí>
 ```
-###📂 Estructura del Proyecto
+## 📂 Estructura del Proyecto
 ```bash
 /Cifrados de flujo
 │
@@ -83,13 +83,13 @@ Los archivos de los rounds se guardarán en la siguiente ruta:
 └── main.cpp          # Lógica principal del menú y ejecución
 
 ```
-###📝 Descripción de los Algoritmos
+## 📝 Descripción de los Algoritmos
 
-Salsa20
+### Salsa20
 Salsa20 es un algoritmo de cifrado de flujo que trabaja sobre bloques de 64 bytes. Se utiliza un nonce y una clave de 32 bytes para generar un flujo de claves, que se combina con el texto plano usando operaciones XOR.
 
-ChaCha20
+### ChaCha20
 ChaCha20 es una variante de Salsa20 que mejora la difusión por medio de más rotaciones y una estructura de diseño optimizada. También trabaja sobre bloques de 64 bytes, usando un nonce y una clave.
 
-RC4
+### RC4
 RC4 es un algoritmo de cifrado de flujo más antiguo. Utiliza una permutación interna de 256 bytes y genera un flujo pseudoaleatorio que se combina con el texto plano. No requiere un nonce, solo una clave de longitud variable.
