@@ -46,9 +46,10 @@ void mostrar_menu() {
     std::cout << "2. Cifrar y descifrar con ChaCha20\n";
     std::cout << "3. Cifrar y descifrar con Salsa20 y ChaCha20 (ambos)\n";
     std::cout << "4. Cifrar y descifrar con RC4\n";
-	std::cout << "5. Creditos\n";
+    std::cout << "5. Fuerza bruta RC4\n"; 
+    std::cout << "6. Creditos\n";
     std::cout << "0. Salir\n";
-    std::cout << "Seleccione una Opcion: ";
+    std::cout << "Seleccione una opción: ";
 }
 
 int main() {
@@ -66,10 +67,10 @@ int main() {
 
     int opcion;
     do {
-        limpiar_pantalla();  
+        limpiar_pantalla();
         mostrar_menu();
         std::cin >> opcion;
-        std::cin.ignore();  
+        std::cin.ignore();
 
         switch (opcion) {
         case 1: {
@@ -85,7 +86,7 @@ int main() {
             std::cout << "Texto cifrado Salsa20 (Hex): " << a_hex(texto_cifrado_salsa20) << std::endl;
             std::cout << "Texto descifrado Salsa20: ";
             imprimir_escapado(texto_descifrado_salsa20);
-            esperar_enter(); 
+            esperar_enter();
             break;
         }
         case 2: {
@@ -142,13 +143,34 @@ int main() {
             esperar_enter();
             break;
         }
-        case 5: {
-			limpiar_pantalla();
+        case 5: {  
+            limpiar_pantalla();
+            std::string palabra_original;
+            std::cout << "Ingrese la palabra original (la que intenta descifrar): ";
+            std::getline(std::cin, palabra_original);
+
+            std::string texto_cifrado_rc4 = rc4(texto_plano, clave);
+
+            std::cout << "Realizando ataque de fuerza bruta sobre RC4...\n";
+            std::string clave_encontrada = fuerza_bruta_rc4(texto_cifrado_rc4, palabra_original);
+
+            if (!clave_encontrada.empty()) {
+                std::cout << "Clave encontrada: " << clave_encontrada << std::endl;
+            }
+            else {
+                std::cout << "Clave no encontrada." << std::endl;
+            }
+            esperar_enter();
+            break;
+        }
+        case 6: {
+            limpiar_pantalla();
             std::cout << "Creditos\n";
             std::cout << "Brian Steven Canon Rojas - 20231678025\n";
             std::cout << "Marlon Stevan Castano Merida - 20231678037\n";
             std::cout << "Alejandro Bernal Bernal - 20231678019\n";
-			esperar_enter();
+            esperar_enter();
+            break;
         }
         case 0: {
             std::cout << "Saliendo...\n";
